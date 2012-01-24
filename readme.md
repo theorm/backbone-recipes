@@ -7,10 +7,11 @@ Example provided uses [Twitter's Bootstrap framework]().
 ## Pagination ##
 
 What's included:
-* A `Recipes.Views.Table` - to easily render a table.
-* A `Recipes.Views.Pager` - to go through next, previous, first, last and Nth pages.
-* A `Recipes.Views.SearchBox` - to filter the collection that backs the table.
-* A `Recipes.Collections.PaginatedCollection` - collection class that understands pagination and filtering.
+
+* `Recipes.Views.Table` - to easily render a table.
+* `Recipes.Views.Pager` - to go through next, previous, first, last and Nth pages.
+* `Recipes.Views.SearchBox` - to filter the collection that backs the table.
+* `Recipes.Collections.PaginatedCollection` - collection class that understands pagination and filtering.
 
 A simple Twitter search that displays results in a paginated table would be implemented like this:
 
