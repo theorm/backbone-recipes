@@ -33,3 +33,6 @@ var search = new Recipes.Views.SearchBox({
 search.$("input").trigger("keyup");
 ``` 
 
+And we get this:
+
+![Twitter search](http://img832.imageshack.us/img832/8813/screenshot20120124at610.png)
