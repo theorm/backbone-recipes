@@ -17,8 +17,8 @@ var Recipes = (function(Recipes) {
 		},
 		render: function() {
 		    var message = $(this.template(this.model.toJSON()));
-		    message.css("display","none");
-		    this.el.empty().append(message);
+		    message.css("display", "none");
+		    this.$el.empty().append(message);
 		    var timeout = this.timeout;
 		    message.fadeIn('slow',function() {
 		        setTimeout(function() {

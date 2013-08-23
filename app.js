@@ -1,5 +1,5 @@
 var App = (function() {
-    
+
     // Application wide ajax error handler
     $(document).ajaxError(function myErrorHandler(event, xhr, ajaxOptions, thrownError) {
 		var model;
@@ -134,8 +134,13 @@ var App = (function() {
         perpage: 4,
         page: 1,
     	parse: function(resp,xhr) {
-			this.page = resp.responseData.cursor.currentPageIndex + 1;
-			this.total = resp.responseData.cursor.estimatedResultCount < 32 ? resp.responseData.cursor.estimatedResultCount : 32;
+            if (resp.responseData.results && resp.responseData.results.length > 0) {
+                this.page = resp.responseData.cursor.currentPageIndex + 1;
+                this.total = resp.responseData.cursor.estimatedResultCount < 32 ? resp.responseData.cursor.estimatedResultCount : 32;                
+            } else {
+                this.page = 1;
+                this.total = 1;
+            }
 			return resp.responseData.results;
 		},
 		fetch : function(options) {
@@ -147,14 +152,17 @@ var App = (function() {
 			options.data.rsz = this.perpage;
 			if (this.page !== undefined)
 				options.data.start = (this.page-1) * this.perpage;
+            options.dataType = 'jsonp';
+            options.reset = true;
 
 			return Backbone.Collection.prototype.fetch.call(this, options);
-		},
+        },
 		search: function(text) {
 		    this.query['q'] = text;
 		    this.fetch();
 		},
     });
     
+
     return App;
 })();

@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 	<head>
 		<meta charset='utf-8'>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 		<title>backbone-recipes examples</title>
 		
-		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css"/>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+
 		<style>
 			header {
 				margin: 50px 0 20px 0;
@@ -13,29 +17,30 @@
 				margin-bottom: 40px;
 			}
 		</style>
-		<script src="libs/head.min.js"></script>
+		<script src="libs/jquery.min.js"></script>
+		<script src="libs/jquery-ui.min.js"></script>
+		<script src="libs/underscore-min.js"></script>
+		<script src="libs/backbone.js"></script>
+		<script src="js/table.js"></script>
+		<script src="js/pagination.js"></script>
+		<script src="js/filters.js"></script>
+		<script src="js/messages.js"></script>
+		<script src="app.js"></script>
+
 		<script>
-			head.js(
-				"libs/jquery.min.js",
-	            "libs/jquery-ui.min.js",
-	            "libs/underscore-min.js",
-	            "libs/backbone.js",
-				"js/table.js",
-				"js/pagination.js",
-				"js/filters.js",
-				"js/messages.js",
-				"app.js",
-				function() {
-					App.start();
-				});
+			$(document).ready(function() {
+				App.start();
+			});
 		</script>
 	</head>
 	<body>
-		<div class="topbar" id="topbar">
-			<div class="topbar-inner">
-				<div class="container">
-					<a class="brand" href="#">Backbone Recipes</a>
-					<ul class="nav">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">Backbone Recipes</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
 						<li><a href="#twitter-pagination">Twitter Pagination</a></li>
 						<li><a href="#google-pagination">Google Pagination</a></li>
 					</ul>
@@ -44,14 +49,12 @@
 		</div>
 		
 		<header>
-			<div class="inner">
-				<div class="container">
-					<h1>Recipes for Backbone.js</h1>
-					<p class="lead">
-						Useful recipes for using backbone.js in real life.
-					</p>
-				</div><!-- /container -->
-			</div>
+			<div class="container">
+				<h1>Recipes for Backbone.js</h1>
+				<p class="lead">
+					Useful recipes for using backbone.js in real life.
+				</p>
+			</div><!-- /container -->
 		</header>
 
 		<div class="container">
@@ -68,16 +71,14 @@
 						Search box triggers search on collection.
 					</p>
 				</div>
-				<form id="search" action="return false;">
-					<div class="clearfix">
+				<form id="search" class="form-inline" role="form">
+					<div class="form-group">
 						<label for="search">Search Twitter</label>
-						<div class="input">
-							<input class="large" name="search" size="30" type="text"/>
-						</div>
+						<input type="search" class="form-control" placeholder="Search" name="search"/>
 					</div>
 				</form>
 				<div id="pager" class="pagination"></div>
-				<table id="table">
+				<table id="table" class="table">
 					<thead>
 						<tr>
 							<th>Who</th>

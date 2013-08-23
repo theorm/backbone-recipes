@@ -48,7 +48,7 @@ var Recipes = (function(Recipes) {
 	});
 	
 	Recipes.Views.Pager = Backbone.View.extend({
-		template: _.template('<ul><li class="first"><a href="#">First</a></li><li class="prev"><a href="#">&larr;</a></li><li class="next"><a href="#">&rarr;</a></li><li class="last"><a href="#">Last</a></li></ul>'),
+		template: _.template('<ul class="pagination"><li class="first"><a href="#">First</a></li><li class="prev"><a href="#">&larr;</a></li><li class="next"><a href="#">&rarr;</a></li><li class="last"><a href="#">Last</a></li></ul>'),
 		page_template: _.template('<li class="page"><a href="#"><%= page %></a></li>'),
 		events: {
 			'click li.first' : 'first',
@@ -62,8 +62,8 @@ var Recipes = (function(Recipes) {
 			this.collection.bind('reset',this.render,this);
 		},
 		render: function() {
-			this.el.empty();
-			this.el.append(this.template());
+			this.$el.empty();
+			this.$el.append(this.template());
 
 			this.$('.first').toggleClass('disabled',!this.collection.hasPreviousPage());
 			this.$('.prev').toggleClass('disabled',!this.collection.hasPreviousPage());
