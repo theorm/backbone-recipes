@@ -5,7 +5,7 @@ var App = (function() {
 		var model;
 		try {
 			var data = JSON.parse(xhr.responseText);
-			model = new Backbone.Model(data);
+			model = new Backbone.Model({'text': data.text || 'Unknown problem'});
 		} catch(e) {
 			if (xhr.responseText != undefined && xhr.responseText != '') {
 				text = xhr.responseText;
@@ -16,13 +16,10 @@ var App = (function() {
 			}
 		}
 		
-		var text = 'An error occured';
-		if (xhr.responseText != undefined && xhr.responseText != '')
-			text = xhr.responseText;
         var msg = new Recipes.Views.FlashMessage({
             el: $("#messages"),
             model: model,
-            template: _.template('<div class="alert alert-danger"><p><%= text || "" %></p></div>')
+            template: _.template('<div class="alert alert-danger"><p><%= text %></p></div>')
         });
         msg.render();
 	});

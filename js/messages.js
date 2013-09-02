@@ -16,6 +16,7 @@ var Recipes = (function(Recipes) {
 			}
 		},
 		render: function() {
+				console.log(this.model.toJSON());
 		    var message = $(this.template(this.model.toJSON()));
 		    message.css("display", "none");
 		    this.$el.empty().append(message);
